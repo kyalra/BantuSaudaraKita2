@@ -2,13 +2,14 @@
 <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+        android:background="@drawable/gradient"
         android:layout_height="match_parent">
     <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@drawable/gradient">
+           >
 
         <ImageView
                 android:layout_width="match_parent"
@@ -18,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:background="#fff"
+                android:background="@drawable/shape_kotak"
                 android:padding="10dp"
                 android:layout_margin="20dp">
 
@@ -51,21 +52,18 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:textSize="20dp"
+                    android:textIsSelectable="true"
                     android:text="08289162892 -BCA-Admin "/>
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:background="#f5f5f5"
+                    android:background="@drawable/shape_kotak"
                     android:layout_margin="15dp"
                     android:orientation="vertical"
                     android:id="@+id/buktitf"
             >
-                <ImageView
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@android:drawable/ic_menu_upload"/>
+
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -74,12 +72,20 @@
                         android:textSize="20sp"
                         android:padding="10dp"/>
             </LinearLayout>
+            <ImageView
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:id="@+id/buktitf1"
+                    android:visibility="gone"
+                    android:src="@android:drawable/ic_menu_upload"/>
 
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:text="Kirim"
+                    android:id="@+id/kirim"
                     android:textColor="#fff"
                     android:background="#1448E6"
                     android:layout_gravity="right"/>

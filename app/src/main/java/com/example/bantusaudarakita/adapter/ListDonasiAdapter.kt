@@ -2,6 +2,7 @@ package com.example.bantusaudarakita.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.util.Log.w
 import android.view.LayoutInflater
@@ -9,15 +10,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.bantusaudarakita.R
 import com.example.bantusaudarakita.model.DataDonasi
 import com.example.bantusaudarakita.view.DetailDonasiActivity
+import kotlinx.android.synthetic.main.daftar_donasi.view.*
+import kotlinx.android.synthetic.main.donasi.view.*
 
 class ListDonasiAdapter : RecyclerView.Adapter<ListDonasiAdapter.ListDonasiViewHolder> {
     lateinit var listDonasi: List<DataDonasi>
     lateinit var mContext: Context
+    private var PICK_IMAGE_REQUEST = 71
 
     constructor() {
 
@@ -34,7 +39,7 @@ class ListDonasiAdapter : RecyclerView.Adapter<ListDonasiAdapter.ListDonasiViewH
 
     override fun onBindViewHolder(p0: ListDonasiViewHolder, p1: Int) {
         val donasi = listDonasi[p1]
-        val urlphoto = "http://192.168.43.236:8000/${donasi.gambar}"
+        val urlphoto = "http://10.10.20.166:8000/img/donasi/${donasi.gambar}"
         w("tag", "tes$urlphoto")
         Glide.with(mContext).load(urlphoto).apply(RequestOptions().placeholder(R.drawable.user)).into(p0.gambar)
         p0.judul.text=donasi.judul
@@ -48,10 +53,14 @@ class ListDonasiAdapter : RecyclerView.Adapter<ListDonasiAdapter.ListDonasiViewH
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ListDonasiViewHolder {
         val view = LayoutInflater.from(mContext).inflate(R.layout.daftar_donasi, p0, false)
+        view.btndonasi.setOnClickListener {
+                val intent = Intent(mContext,DetailDonasiActivity::class.java)
+                mContext.startActivity(intent)
+        }
         view.setOnClickListener {
             val donasi = listDonasi[p1]
             val intent = Intent(mContext, DetailDonasiActivity::class.java)
-            intent.putExtra("users_id", donasi.users_id)
+            intent.putExtra("id", donasi.id)
             intent.putExtra("judul", donasi.judul)
             intent.putExtra("keterangan", donasi.keterangan)
             intent.putExtra("gambar", donasi.gambar)
@@ -59,6 +68,8 @@ class ListDonasiAdapter : RecyclerView.Adapter<ListDonasiAdapter.ListDonasiViewH
             intent.putExtra("jumlah_terkumpul", donasi.jumlah_terkumpul)
             mContext.startActivity(intent)
         }
+
+
         return ListDonasiViewHolder(view)
     }
 
@@ -77,6 +88,7 @@ class ListDonasiAdapter : RecyclerView.Adapter<ListDonasiAdapter.ListDonasiViewH
             total_donasi = item.findViewById(R.id.TotalDonasi)
             gambar = item.findViewById(R.id.Foto)
         }
+
 
     }
 }

@@ -12,4 +12,6 @@
             android:src="@drawable/logo"
             android:layout_margin="20dp"/>
 
+    
+
 </LinearLayout>

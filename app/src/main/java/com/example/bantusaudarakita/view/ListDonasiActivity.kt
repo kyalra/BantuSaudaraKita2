@@ -25,6 +25,7 @@ class ListDonasiActivity : AppCompatActivity() {
             donasiAdapter = ListDonasiAdapter(this@ListDonasiActivity, it)
             rcView!!.adapter = donasiAdapter
         }
+
     }
 
     override fun onBackPressed() {

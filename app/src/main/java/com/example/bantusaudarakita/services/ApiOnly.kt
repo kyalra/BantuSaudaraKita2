@@ -1,24 +1,23 @@
 package com.example.bantusaudarakita.services
 
 import com.example.bantusaudarakita.model.DataDonasi
+import com.example.bantusaudarakita.model.Donasi
+import okhttp3.MultipartBody
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
+import kotlin.random.Random
 
 interface ApiOnly {
-    @GET("buat_donasi")
+    @GET("donasi")
     fun getBuatdonasi(): Call<List<DataDonasi>>
-
-    @POST("donatur")
-    @FormUrlEncoded
+    @Multipart
+    @POST("donasi")
     fun postDonasi(
-        @Field("id_buat_donasi") id_buat_donasi: String,
+        @Field("id") id_buat_donasi: String,
         @Field("nama") nama: String,
         @Field("email") email: String,
-        @Field("komentar") komentar: String,
+        @Field("komen") komentar: String,
         @Field("jumlah_donasi") jumlah_donasi: String,
-        @Field("buktitf") buktitf: String
-    )
+        @Part gambar:MultipartBody.Part
+    ):Call<Donasi>
 }

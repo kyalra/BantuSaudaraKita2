@@ -1,8 +1,11 @@
 package com.example.bantusaudarakita.viewModel
 
+import android.app.Application
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.util.Log.e
+import android.widget.Toast
 import com.example.bantusaudarakita.model.DataDonasi
 import com.example.bantusaudarakita.services.ApiOnly
 import com.example.bantusaudarakita.services.Const
@@ -30,7 +33,7 @@ class DataDonasiViewModel : ViewModel() {
         val getData = apiData.getBuatdonasi()
         getData.enqueue(object :Callback<List<DataDonasi>>{
             override fun onFailure(call: Call<List<DataDonasi>>, t: Throwable) {
-                   TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                e("HAA", t.localizedMessage)
             }
 
             override fun onResponse(call: Call<List<DataDonasi>>, response: Response<List<DataDonasi>>) {
