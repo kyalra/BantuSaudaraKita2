@@ -79,6 +79,12 @@
                     android:id="@+id/buktitf1"
                     android:visibility="gone"
                     android:src="@android:drawable/ic_menu_upload"/>
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/gambar_"
+                      android:visibility="gone"
+                      android:textSize="15sp"
+            />
 
             <Button
                     android:layout_width="wrap_content"
