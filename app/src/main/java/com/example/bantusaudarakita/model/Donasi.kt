@@ -15,8 +15,8 @@ class Donasi {
     lateinit var komentar: String
     @SerializedName("jumlah_donasi")
     lateinit var jumlah_donasi: String
-    @SerializedName("gambar")
-    lateinit var gambar: String
+    @SerializedName("buktitf")
+    lateinit var buktitf: String
     @SerializedName("konfirmasi")
     lateinit var konfirmasi: String
     @SerializedName("created_at")
@@ -30,7 +30,7 @@ class Donasi {
         email: String,
         komentar: String,
         jumlah_donasi: String,
-        gambar: String,
+        buktitf: String,
         konfirmasi: String,
         created_at: String
     ){
@@ -39,7 +39,7 @@ class Donasi {
         this.email=email
         this.komentar=komentar
         this.jumlah_donasi=jumlah_donasi
-        this.gambar=gambar
+        this.buktitf=buktitf
         this.komentar=komentar
         this.created_at=created_at
     }

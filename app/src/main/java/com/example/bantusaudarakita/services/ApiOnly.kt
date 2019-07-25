@@ -15,12 +15,12 @@ interface ApiOnly {
     @POST("donasi")
     @FormUrlEncoded
     fun postDonasi(
-        @Field("id") id_buat_donasi: String,
+        @Field("id_buat_donasi") id_buat_donasi: String,
         @Field("nama") nama: String,
         @Field("email") email: String,
         @Field("komen") komentar: String,
         @Field("jumlah_donasi") jumlah_donasi: String,
-        @Field("gambar")gambar: String
+        @Field("buktitf")buktitf: String
     ):Call<Donasi>
     @Multipart
     @POST("upload")

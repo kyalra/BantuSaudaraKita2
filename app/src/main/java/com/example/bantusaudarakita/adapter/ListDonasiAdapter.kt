@@ -39,7 +39,7 @@ class ListDonasiAdapter : RecyclerView.Adapter<ListDonasiAdapter.ListDonasiViewH
 
     override fun onBindViewHolder(p0: ListDonasiViewHolder, p1: Int) {
         val donasi = listDonasi[p1]
-        val urlphoto = "http://172.16.10.143:8000/img/donasi/${donasi.gambar}"
+        val urlphoto = "http://10.10.20.166:8000/img/donasi/${donasi.gambar}"
         w("tag", "tes$urlphoto")
         Glide.with(mContext).load(urlphoto).apply(RequestOptions().placeholder(R.drawable.user)).into(p0.gambar)
         p0.judul.text=donasi.judul
@@ -54,20 +54,17 @@ class ListDonasiAdapter : RecyclerView.Adapter<ListDonasiAdapter.ListDonasiViewH
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ListDonasiViewHolder {
         val view = LayoutInflater.from(mContext).inflate(R.layout.daftar_donasi, p0, false)
         view.btndonasi.setOnClickListener {
-                val intent = Intent(mContext,DetailDonasiActivity::class.java)
-                mContext.startActivity(intent)
-        }
-        view.setOnClickListener {
             val donasi = listDonasi[p1]
-            val intent = Intent(mContext, DetailDonasiActivity::class.java)
+                val intent = Intent(mContext,DetailDonasiActivity::class.java)
             intent.putExtra("id", donasi.id)
             intent.putExtra("judul", donasi.judul)
             intent.putExtra("keterangan", donasi.keterangan)
             intent.putExtra("gambar", donasi.gambar)
             intent.putExtra("jumlah", donasi.jumlah)
             intent.putExtra("jumlah_terkumpul", donasi.jumlah_terkumpul)
-            mContext.startActivity(intent)
+                mContext.startActivity(intent)
         }
+
 
 
         return ListDonasiViewHolder(view)

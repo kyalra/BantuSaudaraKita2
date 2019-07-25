@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.bantusaudarakita.R
 
@@ -45,7 +46,7 @@ class DetailDonasiActivity : AppCompatActivity() {
     private var mImageView:ImageView?=null
     private var uri:Uri?=null
     private var gambar: MultipartBody.Part?=null
-
+    private var id: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,7 +57,8 @@ class DetailDonasiActivity : AppCompatActivity() {
 //        gambar=findViewById(R.id.buktitf1)
 
 
-        val id = intent.getStringExtra("id")
+        id = intent.getStringExtra("id")
+        e("tag", "id $id")
         buktitf.setOnClickListener {
             if(EasyPermissions.hasPermissions(this,android.Manifest.permission.READ_EXTERNAL_STORAGE)){
                 val i = Intent(this, ImagePickActivity::class.java)
@@ -69,8 +71,9 @@ class DetailDonasiActivity : AppCompatActivity() {
         }
 
         kirim.setOnClickListener {
-            show()
+
             send()
+
 
         }
 
@@ -126,27 +129,33 @@ class DetailDonasiActivity : AppCompatActivity() {
         val client = OkHttpClient.Builder().addInterceptor(interceptor).connectTimeout(100, TimeUnit.SECONDS).readTimeout(100, TimeUnit.SECONDS).build()
         var retrofit = Retrofit.Builder().client(client).baseUrl(Const.base_url).addConverterFactory(GsonConverterFactory.create()).build()
         val postData = retrofit!!.create(ApiOnly::class.java)
-        val id = intent.getStringExtra("id")
+        val id_ = id
         val name = nama.text.toString()
         val email = email.text.toString()
         val comment = komentar.text.toString()
         val jumlah = jumlah_donasi.text.toString()
         val namegamber = gambar_.text.toString()
+        e("tag", "id $id_")
         e("tag", "sss $namegamber")
 
-
-
-        postData.postDonasi("${id}", "${name}", "${email}", "${comment}", "${jumlah}", "${namegamber}"
+        if (name.equals("")||email.equals("")||email.equals("")||comment.equals("")||jumlah.equals("")){
+            Toast.makeText(this@DetailDonasiActivity,"Kolom tidak boleh kosong...",Toast.LENGTH_SHORT).show()
+        }else{
+            show()
+            postData.postDonasi("${id_}", "${name}", "${email}", "${comment}", "${jumlah}", "${namegamber}"
             ).enqueue(object : Callback<Donasi>{
-            override fun onFailure(call: Call<Donasi>, t: Throwable) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
+                override fun onFailure(call: Call<Donasi>, t: Throwable) {
+                    i("tag", "tes"+t)
+                }
 
-            override fun onResponse(call: Call<Donasi>, response: Response<Donasi>) {
-                i("tag", "tes"+response.body().toString())
-            }
+                override fun onResponse(call: Call<Donasi>, response: Response<Donasi>) {
+                    i("tag", "tes"+response.body().toString())
+                }
 
-        })
+            })
+        }
+
+
 
     }
     fun show(){

@@ -27,11 +27,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
+                    android:inputType="textPersonName"
                     android:id="@+id/nama"
                     android:hint="Nama"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_margin="20dp"
+                    android:inputType="textEmailAddress"
                     android:id="@+id/email"
                     android:layout_height="wrap_content"
                     android:hint="Email"/>
@@ -39,12 +41,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
+                    android:inputType="text"
                     android:id="@+id/komentar"
                     android:hint="Komentar"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
+                    android:inputType="number"
                     android:id="@+id/jumlah_donasi"
                     android:hint="Jumlah Donasi"/>
             <TextView
