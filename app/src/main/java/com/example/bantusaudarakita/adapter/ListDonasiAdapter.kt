@@ -39,7 +39,7 @@ class ListDonasiAdapter : RecyclerView.Adapter<ListDonasiAdapter.ListDonasiViewH
 
     override fun onBindViewHolder(p0: ListDonasiViewHolder, p1: Int) {
         val donasi = listDonasi[p1]
-        val urlphoto = "http://10.10.20.166:8000/img/donasi/${donasi.gambar}"
+        val urlphoto = "https://bantusodarakita.rdlvindonesia.com//img/donasi/${donasi.gambar}"
         w("tag", "tes$urlphoto")
         Glide.with(mContext).load(urlphoto).apply(RequestOptions().placeholder(R.drawable.user)).into(p0.gambar)
         p0.judul.text=donasi.judul
